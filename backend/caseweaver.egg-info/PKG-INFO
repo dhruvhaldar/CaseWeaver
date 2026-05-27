@@ -1,3 +1,21 @@
+Metadata-Version: 2.4
+Name: caseweaver
+Version: 0.1.0
+Summary: Local AI case generation for CFD solvers.
+Author: Caseweaver Contributors
+License: GPL-3.0-only
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fastapi>=0.115
+Requires-Dist: uvicorn>=0.30
+Requires-Dist: pydantic>=2.7
+Requires-Dist: httpx>=0.27
+Provides-Extra: dev
+Requires-Dist: pytest>=8.2; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23; extra == "dev"
+Dynamic: license-file
+
 # Caseweaver
 
 Local AI case generation for CFD solvers.
@@ -20,7 +38,7 @@ Caseweaver is licensed under GPLv3.
 
 - FastAPI backend with endpoints for case generation, Case Memory import/list, and OpenFOAM detection/update planning.
 - Schema-first `CaseSpec` and deterministic lid-driven cavity file generation.
-- OpenFOAM Manager detection (`which` + environment), Docker OpenFOAM image detection, and explicit confirmation gate for updates.
+- OpenFOAM Manager detection (`which` + environment) and explicit confirmation gate for updates.
 - Case Memory SQLite store with trust-level-aware schema baseline.
 - CLI scaffold for `serve`, `generate`, `ingest`, and `openfoam` actions.
 - Test suite for generator golden behavior, API integration, and OpenFOAM detection shape.
@@ -40,7 +58,7 @@ Caseweaver is licensed under GPLv3.
 - `GET /api/memory/cases`
 
 ### OpenFOAM Manager
-- `GET /api/openfoam/detect` (includes native command + Docker image detection)
+- `GET /api/openfoam/detect`
 - `GET /api/openfoam/updates`
 - `POST /api/openfoam/update` (requires `{"confirm": true}`)
 
@@ -61,19 +79,6 @@ Run tests:
 ```bash
 pytest
 ```
-
-### Frontend (Tailwind + glassmorphism UI)
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Build production assets:
-```bash
-npm run build
-```
-
 
 ## Roadmap summary
 
